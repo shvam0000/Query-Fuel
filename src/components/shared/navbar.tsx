@@ -75,6 +75,7 @@ export default function NavBar() {
             </ul>
 
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
+              {/* //! TODO: To add email verification  */}
               {user ? (
                 <>
                   <h1>Welcome {user.name}</h1>
