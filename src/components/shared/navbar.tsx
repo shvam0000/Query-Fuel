@@ -65,12 +65,16 @@ export default function NavBar() {
               <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
                 <Link href="/feed">Feed</Link>
               </li>
-              <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
-                <Link href="/announcement">Announcement</Link>
-              </li>
-              <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
-                <Link href="/contact-us">Contact US</Link>
-              </li>
+              {user && (
+                <>
+                  <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
+                    <Link href="/announcement">Announcement</Link>
+                  </li>
+                  <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
+                    <Link href="/contact-us">Contact US</Link>
+                  </li>
+                </>
+              )}
             </ul>
 
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
@@ -85,12 +89,11 @@ export default function NavBar() {
                   </a>
                 </>
               ) : (
-                //! TODO: Consider next/Link
-                <a href="/api/auth/login">
+                <Link href="/api/auth/login">
                   <Button type="primary">
                     <span>Sign in</span>
                   </Button>
-                </a>
+                </Link>
               )}
             </div>
           </div>
@@ -106,12 +109,11 @@ export default function NavBar() {
               </a>
             </>
           ) : (
-            //! TODO: Consider next/Link
-            <a href="/api/auth/login">
+            <Link href="/api/auth/login">
               <Button type="primary">
                 <span>Sign in</span>
               </Button>
-            </a>
+            </Link>
           )}
         </div>
       </div>
