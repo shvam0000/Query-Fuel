@@ -1,0 +1,24 @@
+{
+  "name": "query-fuel-backend",
+  "version": "1.0.0",
+  "description": "Backend for Query Fuel App",
+  "main": "app.js",
+  "author": "Shivam Shekhar",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js",
+    "restart": "lite-server",
+    "lite-server": "run-lite-server"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^5.0.1",
+    "mongoose": "^6.9.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
+  }
+}
