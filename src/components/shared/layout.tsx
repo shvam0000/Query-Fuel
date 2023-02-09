@@ -4,7 +4,7 @@ import NavBar from './navbar';
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="font-primary">
+    <div className="font-sans-serif">
       <NavBar />
       {children}
     </div>

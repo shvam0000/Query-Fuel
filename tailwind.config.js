@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Montserrat', 'sanes-serif'],
+        'sans-serif': ['Montserrat', 'sans-serif'],
       },
       colors: {
         'primary-orange': '#FF7629',

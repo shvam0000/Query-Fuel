@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from './';
+import Link from 'next/link';
 
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
@@ -54,36 +55,44 @@ export default function NavBar() {
             }`}>
             <ul className="items-center  justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
-                Home
+                <Link href="/">Home</Link>
               </li>
               <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
-                Feed
+                <Link href="/feed">Feed</Link>
               </li>
               <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
-                Announcements
+                <Link href="/announcement">Announcement</Link>
               </li>
               <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
-                Contact US
+                <Link href="/contact-us">Contact US</Link>
               </li>
             </ul>
 
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
-              <Button type="primary">
-                <span>Sign in</span>
-              </Button>
-              <Button type="secondary">
-                <span>Sign up</span>
-              </Button>
+              <Link href="/auth">
+                <Button type="primary">
+                  <span>Sign in</span>
+                </Button>
+              </Link>
+              <Link href="/auth">
+                <Button type="secondary">
+                  <span>Sign up</span>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
         <div className="hidden space-x-2 md:flex ">
-          <Button type="primary">
-            <span>Sign in</span>
-          </Button>
-          <Button type="secondary">
-            <span>Sign up</span>
-          </Button>
+          <Link href="/auth">
+            <Button type="primary">
+              <span>Sign in</span>
+            </Button>
+          </Link>
+          <Link href="/auth">
+            <Button type="secondary">
+              <span>Sign up</span>
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>
