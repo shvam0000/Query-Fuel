@@ -9,7 +9,16 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        primary: ['Montserrat', 'sanes-serif'],
+      },
+      colors: {
+        'primary-orange': '#FF7629',
+        'primary-white': '#FFFFFF',
+        'primary-black': '#000000',
+      },
+    },
   },
   plugins: [],
 };
