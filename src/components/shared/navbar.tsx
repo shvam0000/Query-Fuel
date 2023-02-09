@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import { Button } from './';
 import Link from 'next/link';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import Image from 'next/image';
 
 export default function NavBar() {
+  const { user, error, isLoading } = useUser();
+  //! TODO: To be removed after testing
+  console.log(user);
+
   const [navbar, setNavbar] = useState(false);
 
   return (
@@ -69,30 +75,42 @@ export default function NavBar() {
             </ul>
 
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
-              <Link href="/auth">
-                <Button type="primary">
-                  <span>Sign in</span>
-                </Button>
-              </Link>
-              <Link href="/auth">
-                <Button type="secondary">
-                  <span>Sign up</span>
-                </Button>
-              </Link>
+              {user ? (
+                <>
+                  <h1>Welcome {user.name}</h1>
+                  <a href="api/auth/logout">
+                    <Button type="primary">
+                      <span>Sign out</span>
+                    </Button>
+                  </a>
+                </>
+              ) : (
+                <a href="/api/auth/login">
+                  <Button type="primary">
+                    <span>Sign in</span>
+                  </Button>
+                </a>
+              )}
             </div>
           </div>
         </div>
         <div className="hidden space-x-2 md:flex ">
-          <Link href="/auth">
-            <Button type="primary">
-              <span>Sign in</span>
-            </Button>
-          </Link>
-          <Link href="/auth">
-            <Button type="secondary">
-              <span>Sign up</span>
-            </Button>
-          </Link>
+          {user ? (
+            <>
+              <h1>Welcome {user.name}</h1>
+              <a href="api/auth/logout">
+                <Button type="primary">
+                  <span>Sign out</span>
+                </Button>
+              </a>
+            </>
+          ) : (
+            <a href="/api/auth/login">
+              <Button type="primary">
+                <span>Sign in</span>
+              </Button>
+            </a>
+          )}
         </div>
       </div>
     </nav>
