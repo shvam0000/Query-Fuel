@@ -12,12 +12,14 @@ router.get('/', (req, res, next) => {
         count: docs.length,
         announcements: docs.map((doc) => {
           return {
+            _id: doc._id,
             title: doc.title,
             announcement: doc.announcement,
-            _id: doc._id,
+            nickName: doc.nickName,
+            imageUrl: doc.imageUrl,
             request: {
               type: 'GET',
-              url: 'http://localhost:3001/announcements/' + doc._id,
+              url: 'http://localhost:3000/announcements/' + doc._id,
             },
           };
         }),
@@ -37,6 +39,8 @@ router.post('/', (req, res, next) => {
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
     announcement: req.body.announcement,
+    nickName: req.body.nickName,
+    imageUrl: req.body.imageUrl,
   });
   announcement
     .save()
@@ -45,12 +49,14 @@ router.post('/', (req, res, next) => {
       res.status(201).json({
         message: 'Created announcement successfully',
         createdAnnouncement: {
+          _id: result._id,
           title: result.title,
           announcement: result.announcement,
-          _id: result._id,
+          nickName: result.nickName,
+          imageUrl: result.imageUrl,
           request: {
             type: 'GET',
-            url: 'http://localhost:3001/announcements/' + result._id,
+            url: 'http://localhost:3000/announcements/' + result._id,
           },
         },
       });

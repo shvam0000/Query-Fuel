@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from './';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Image from 'next/image';
 
 export default function NavBar() {
+  //! TODO: Use error and isLoading to display a loading spinner or error message
   const { user, error, isLoading } = useUser();
-  //! TODO: To be removed after testing
-  console.log(user);
 
   const [navbar, setNavbar] = useState(false);
 
@@ -86,6 +85,7 @@ export default function NavBar() {
                   </a>
                 </>
               ) : (
+                //! TODO: Consider next/Link
                 <a href="/api/auth/login">
                   <Button type="primary">
                     <span>Sign in</span>
@@ -106,6 +106,7 @@ export default function NavBar() {
               </a>
             </>
           ) : (
+            //! TODO: Consider next/Link
             <a href="/api/auth/login">
               <Button type="primary">
                 <span>Sign in</span>
