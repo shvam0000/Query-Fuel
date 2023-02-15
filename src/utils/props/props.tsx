@@ -12,6 +12,6 @@ export type AnnouncementCardProps = {
   title: string;
   announcement: string;
   nickname: string;
-  imageUrl: string | 'https://i1.wp.com/cdn.auth0.com/avatars/ss.png?ssl=1';
+  // imageUrl?: string | 'https://i1.wp.com/cdn.auth0.com/avatars/ss.png?ssl=1';
   date?: string;
 };
