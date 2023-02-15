@@ -15,3 +15,9 @@ export type AnnouncementCardProps = {
   // imageUrl?: string | 'https://i1.wp.com/cdn.auth0.com/avatars/ss.png?ssl=1';
   date?: string;
 };
+
+export type InnovationCardProps = {
+  img?: JSX.Element;
+  title?: string;
+  description?: string;
+};
