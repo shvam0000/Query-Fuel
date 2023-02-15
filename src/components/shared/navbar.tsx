@@ -15,12 +15,14 @@ export default function NavBar() {
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3">
-            <figure className="text-primary-orange">
+            <figure className="text-primary-orange hover:animate-spin">
               <Logo />
             </figure>
-            <h2 className="text-3xl font-medium text-primary-black">
-              Query Fuel
-            </h2>
+            <Link href="/">
+              <h2 className="text-3xl font-medium text-primary-black">
+                Query Fuel
+              </h2>
+            </Link>
             <div className="md:hidden">
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"

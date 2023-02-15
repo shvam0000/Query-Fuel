@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
       <div className="sm:flex sm:items-center sm:justify-between">
         <div className="flex items-center mb-4 sm:mb-0">
-          <figure className="text-primary-orange">
+          <figure className="text-primary-orange hover:animate-spin">
             <Logo />
           </figure>
           <h2 className="text-3xl font-medium text-primary-black">
