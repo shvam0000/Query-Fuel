@@ -26,7 +26,7 @@ const innovationData = [
 const Innovation = () => {
   return (
     <div>
-      <h1 className="flex justify-center py-5 sm:py-10 font-bold text-xl sm:text-2xl">
+      <h1 className="flex justify-center py-5 sm:py-10 font-bold sm:font-extrabold text-xl sm:text-4xl">
         Innovation behind Query-Fuel
       </h1>
       <div className="sm:flex justify-evenly items-center">
