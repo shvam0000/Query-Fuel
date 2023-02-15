@@ -1,12 +1,13 @@
 import React from 'react';
 import { LayoutProps } from '@/utils/props/props';
-import NavBar from './navbar';
+import { Navbar, Footer } from './';
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="font-sans-serif">
-      <NavBar />
+      <Navbar />
       {children}
+      <Footer />
     </div>
   );
 };
