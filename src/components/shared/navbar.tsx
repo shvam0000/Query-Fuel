@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/shared';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { Logo } from '@/utils/icons';
 
 export default function NavBar() {
   //! TODO: Use error and isLoading to display a loading spinner or error message
@@ -13,7 +14,10 @@ export default function NavBar() {
     <nav className="w-full bg-primary-white">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
+          <div className="flex items-center justify-between py-3">
+            <figure className="text-primary-orange">
+              <Logo />
+            </figure>
             <h2 className="text-3xl font-medium text-primary-black">
               Query Fuel
             </h2>
