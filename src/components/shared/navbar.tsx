@@ -19,7 +19,7 @@ export default function NavBar() {
               <Logo />
             </figure>
             <Link href="/">
-              <h2 className="text-3xl font-medium text-primary-black">
+              <h2 className="text-3xl font-bold text-primary-black">
                 Query Fuel
               </h2>
             </Link>
@@ -64,20 +64,20 @@ export default function NavBar() {
               navbar ? 'block' : 'hidden'
             }`}>
             <ul className="items-center  justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
+              <li className="text-gray-500 text-xl font-bold hover:text-primary-black">
                 <Link href="/">Home</Link>
               </li>
               {user && (
                 <>
-                  <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
+                  <li className="text-gray-500 text-xl font-bold hover:text-primary-black">
                     <Link href="/announcement">Announcement</Link>
                   </li>
-                  <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
+                  <li className="text-gray-500 text-xl font-bold hover:text-primary-black">
                     <Link href="/feed">Feed</Link>
                   </li>
                 </>
               )}
-              <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
+              <li className="text-gray-500 text-xl font-bold hover:text-primary-black">
                 <Link href="/contact-us">Contact US</Link>
               </li>
             </ul>
