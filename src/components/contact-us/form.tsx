@@ -39,7 +39,7 @@ const ContactForm = () => {
           <div>
             <label
               htmlFor="email"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+              className="block mb-2 text-sm font-bold text-gray-900 dark:text-gray-300">
               Your email
             </label>
             <input
@@ -55,7 +55,7 @@ const ContactForm = () => {
           <div>
             <label
               htmlFor="subject"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+              className="block mb-2 text-sm font-bold text-gray-900 dark:text-gray-300">
               Subject
             </label>
             <input
@@ -71,7 +71,7 @@ const ContactForm = () => {
           <div className="sm:col-span-2">
             <label
               htmlFor="message"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">
+              className="block mb-2 text-sm font-bold text-gray-900 dark:text-gray-400">
               Your message
             </label>
             <textarea
@@ -85,7 +85,6 @@ const ContactForm = () => {
           <Button type="primary">
             <span>Send message</span>
           </Button>
-          {/* <button type="submit">Submit</button> */}
         </form>
       </div>
     </div>
