@@ -5,3 +5,5 @@ export { default as Logo } from './logo';
 export { default as Call } from './call';
 export { default as Location } from './location';
 export { default as Contact } from './contact';
+export { default as Github } from './github';
+export { default as Linkedin } from './linkedin';
