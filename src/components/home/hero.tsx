@@ -1,10 +1,11 @@
 import React from 'react';
-import { ContactSection, Innovation } from './';
+import { ContactSection, Innovation, TeamSection } from './';
 
 const Hero = () => {
   return (
     <div className="p-10">
       <Innovation />
+      <TeamSection />
       <ContactSection />
     </div>
   );

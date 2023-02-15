@@ -21,3 +21,11 @@ export type InnovationCardProps = {
   title?: string;
   description?: string;
 };
+
+export type TeamCardProps = {
+  url?: string;
+  subtitle?: string;
+  name?: string;
+  github?: string;
+  linkedin?: string;
+};
