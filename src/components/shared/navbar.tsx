@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Button } from './';
+import { useState } from 'react';
+import { Button } from '@/components/shared';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0/client';
-import Image from 'next/image';
 
 export default function NavBar() {
   //! TODO: Use error and isLoading to display a loading spinner or error message
@@ -63,7 +62,7 @@ export default function NavBar() {
                 <Link href="/">Home</Link>
               </li>
               <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
-                <Link href="/feed">Feed</Link>
+                <Link href="/contact-us">Contact US</Link>
               </li>
               {user && (
                 <>
@@ -71,7 +70,7 @@ export default function NavBar() {
                     <Link href="/announcement">Announcement</Link>
                   </li>
                   <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
-                    <Link href="/contact-us">Contact US</Link>
+                    <Link href="/feed">Feed</Link>
                   </li>
                 </>
               )}
@@ -80,14 +79,14 @@ export default function NavBar() {
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
               {/* //! TODO: To add email verification  */}
               {user ? (
-                <>
-                  <h1>Welcome {user.name}</h1>
-                  <a href="api/auth/logout">
+                <div className="flex items-center">
+                  <h1 className="px-2">Welcome, {user.name}</h1>
+                  <Link href="api/auth/logout">
                     <Button type="primary">
                       <span>Sign out</span>
                     </Button>
-                  </a>
-                </>
+                  </Link>
+                </div>
               ) : (
                 <Link href="/api/auth/login">
                   <Button type="primary">
@@ -100,14 +99,14 @@ export default function NavBar() {
         </div>
         <div className="hidden space-x-2 md:flex ">
           {user ? (
-            <>
-              <h1>Welcome {user.name}</h1>
-              <a href="api/auth/logout">
+            <div className="flex items-center">
+              <h1 className="px-2">Welcome, {user.name}</h1>
+              <Link href="api/auth/logout">
                 <Button type="primary">
                   <span>Sign out</span>
                 </Button>
-              </a>
-            </>
+              </Link>
+            </div>
           ) : (
             <Link href="/api/auth/login">
               <Button type="primary">
