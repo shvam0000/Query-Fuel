@@ -61,9 +61,6 @@ export default function NavBar() {
               <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
                 <Link href="/">Home</Link>
               </li>
-              <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
-                <Link href="/contact-us">Contact US</Link>
-              </li>
               {user && (
                 <>
                   <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
@@ -74,6 +71,9 @@ export default function NavBar() {
                   </li>
                 </>
               )}
+              <li className="text-gray-500 text-xl font-medium hover:text-primary-black">
+                <Link href="/contact-us">Contact US</Link>
+              </li>
             </ul>
 
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
