@@ -3,8 +3,8 @@ import { ContactForm } from '../contact-us';
 
 const ContactSection = () => {
   return (
-    <div className="flex justify-center items-start">
-      <div className="w-1/2 py-10 pt-20 px-10">
+    <div className="sm:flex justify-center items-start">
+      <div className="sm:w-1/2 py-10 pt-20 px-10">
         <div className="py-4">
           <h1 className="text-4xl font-bold">Contact Us</h1>
           <h2 className="text-xl pt-2 font-medium">
@@ -37,7 +37,7 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
-      <div className="w-1/2">
+      <div className="sm:w-1/2">
         <ContactForm />
       </div>
     </div>
