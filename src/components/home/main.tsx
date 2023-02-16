@@ -8,9 +8,9 @@ import Link from 'next/link';
 const Main = () => {
   const { user } = useUser();
   return (
-    <div className="h-screen flex">
-      <div className="w-1/2 px-10 pt-32">
-        <h1 className="text-5xl font-extrabold">
+    <div className="sm:h-screen flex">
+      <div className="sm:w-1/2 sm:px-10 sm:pt-32 pb-10 sm:pb-0">
+        <h1 className="text-3xl text-center sm:text-left sm:text-5xl font-extrabold">
           <Typewriter
             onInit={(typewriter) => {
               typewriter
@@ -39,20 +39,20 @@ const Main = () => {
           <div className="pr-4">
             <Link href={user ? '/feed' : '/api/auth/login'}>
               <Button type="primary">
-                <h1 className="font-bold text-2xl">Get Started</h1>
+                <h1 className="font-bold sm:text-2xl">Get Started</h1>
               </Button>
             </Link>
           </div>
           <div>
             <Link href="/contact-us">
               <Button type="secondary">
-                <h1 className="font-bold text-2xl">Contact Us</h1>
+                <h1 className="font-bold sm:text-2xl">Contact Us</h1>
               </Button>
             </Link>
           </div>
         </div>
       </div>
-      <div className="w-1/2 p-10 bg-welcome h-full">
+      <div className="w-1/2 p-10 bg-welcome h-full hidden sm:block">
         <Image src={Welcome} alt="" height={500} width={700} />
       </div>
     </div>
