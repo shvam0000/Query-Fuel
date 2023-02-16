@@ -30,7 +30,7 @@ const TeamSection = () => {
             Meet the team behind Query Fuel
           </p>
         </div>
-        <div className="flex justify-evenly">
+        <div className="sm:flex justify-evenly">
           {teamData.map((data) => (
             <TeamCard key={data.github} {...data} />
           ))}

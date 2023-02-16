@@ -26,7 +26,7 @@ const TeamCard: React.FC<TeamCardProps> = ({
             <a href="#">{name}</a>
           </h3>
           <span className="text-gray-500 dark:text-gray-400">{subtitle}</span>
-          <div className="flex text-2xl text-primary-black py-10">
+          <div className="flex text-2xl text-primary-black sm:py-10 py-5">
             <a href={github} className="pr-2">
               <Github />
             </a>
