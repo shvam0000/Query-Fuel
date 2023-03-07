@@ -1,8 +1,14 @@
 import React from 'react';
+import { FeedForm, QueryList } from '@/components/feed';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 const FeedPage = () => {
-  return <div>FeedPage</div>;
+  return (
+    <div>
+      <FeedForm />
+      <QueryList />
+    </div>
+  );
 };
 
 export default FeedPage;

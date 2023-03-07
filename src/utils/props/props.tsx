@@ -29,3 +29,9 @@ export type TeamCardProps = {
   github?: string;
   linkedin?: string;
 };
+
+export type QueryItemProps = {
+  id: string;
+  query: string;
+  createdBy: string;
+};
