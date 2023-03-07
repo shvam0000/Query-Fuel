@@ -66,4 +66,30 @@ router.post('/', (req, res, next) => {
     });
 });
 
+router.get('/:queryId', (req, res, next) => {
+  const id = req.params.queryId;
+  Query.findById(id)
+    .exec()
+    .then((doc) => {
+      console.log('From database', doc);
+      if (doc) {
+        res.status(200).json({
+          query: doc,
+          request: {
+            type: 'GET',
+            url: 'http://localhost:3000/queries',
+          },
+        });
+      } else {
+        res
+          .status(404)
+          .json({ message: 'No valid entry found for provided ID' });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+});
+
 module.exports = router;
