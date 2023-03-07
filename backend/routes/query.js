@@ -2,23 +2,23 @@ const express = require('express');
 const { default: mongoose } = require('mongoose');
 const router = express.Router();
 
-const Announcement = require('../models/announcement');
+const Query = require('../models/query');
 
 router.get('/', (req, res, next) => {
-  Announcement.find()
+  Query.find()
     .exec()
     .then((docs) => {
       const response = {
         count: docs.length,
-        announcements: docs.map((doc) => {
+        queries: docs.map((doc) => {
           return {
             _id: doc._id,
-            announcement: doc.announcement,
-            nickName: doc.nickName,
-            imageUrl: doc.imageUrl,
+            title: doc.title,
+            query: doc.query,
+            createdBy: doc.createdBy,
             request: {
               type: 'GET',
-              url: 'http://localhost:3000/announcements/' + doc._id,
+              url: 'http://localhost:3000/queries/' + doc._id,
             },
           };
         }),
@@ -34,26 +34,26 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  const announcement = new Announcement({
+  const query = new Query({
     _id: new mongoose.Types.ObjectId(),
-    announcement: req.body.announcement,
-    nickName: req.body.nickName,
-    imageUrl: req.body.imageUrl,
+    title: req.body.title,
+    query: req.body.query,
+    createdBy: req.body.createdBy,
   });
-  announcement
+  query
     .save()
     .then((result) => {
       console.log(result);
       res.status(201).json({
-        message: 'Created announcement successfully',
-        createdAnnouncement: {
+        message: 'Created query successfully',
+        createdQuery: {
           _id: result._id,
-          announcement: result.announcement,
-          nickName: result.nickName,
-          imageUrl: result.imageUrl,
+          title: result.title,
+          query: result.query,
+          createdBy: result.createdBy,
           request: {
             type: 'GET',
-            url: 'http://localhost:3000/announcements/' + result._id,
+            url: 'http://localhost:3000/queries/' + result._id,
           },
         },
       });
