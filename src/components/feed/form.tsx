@@ -17,7 +17,7 @@ const Form = () => {
       .post('http://localhost:3001/query', data)
       .then((res) => {
         console.log(res);
-        alert('Query submitted successfully');
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);

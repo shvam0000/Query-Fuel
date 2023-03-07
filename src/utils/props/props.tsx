@@ -35,3 +35,9 @@ export type QueryItemProps = {
   query: string;
   createdBy: string;
 };
+
+export type CommentItemProps = {
+  id: string;
+  comment?: string;
+  createdBy: string;
+};

@@ -3,6 +3,7 @@ const { default: mongoose } = require('mongoose');
 const router = express.Router();
 
 const Query = require('../models/query');
+const Comment = require('../models/query');
 
 router.get('/', (req, res, next) => {
   Query.find()
@@ -90,6 +91,98 @@ router.get('/:queryId', (req, res, next) => {
       console.log(err);
       res.status(500).json({ error: err });
     });
+});
+
+router.post('/:queryId/comments', async (req, res, next) => {
+  console.log('hehe');
+  const Id = req.params.queryId;
+  console.log(Id);
+
+  try {
+    const query = await Query.findById(Id.toString());
+    if (!query) {
+      return res.status(404).json({ message: 'Query not found' });
+    }
+    const comment = new Comment({
+      _id: new mongoose.Types.ObjectId(),
+      comment: req.body.comment,
+      createdBy: req.body.createdBy,
+    });
+    query.comments.push(comment);
+    await query.save();
+    await comment.save();
+    res.status(201).json({
+      message: 'Created comment successfully',
+      createdComment: {
+        _id: comment._id,
+        comment: comment.comment,
+        createdBy: comment.createdBy,
+        request: {
+          type: 'GET',
+          url:
+            'http://localhost:3000/queries/' +
+            query._id +
+            '/comments/' +
+            comment._id,
+        },
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      error: err,
+    });
+  }
+});
+
+router.get('/:queryId/comments', async (req, res, next) => {
+  const Id = req.params.queryId;
+  try {
+    const query = await Query.findById(Id);
+    if (!query) {
+      return res.status(404).json({ message: 'Query not found' });
+    }
+    const comments = await Comment.find({ _id: { $in: query.comments } });
+    res.status(200).json({
+      comments: comments,
+      request: {
+        type: 'GET',
+        url: 'http://localhost:3000/queries/' + query._id + '/comments',
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      error: err,
+    });
+  }
+});
+
+router.get('/:queryId/comments/:commentId', async (req, res, next) => {
+  const Id = req.params.queryId;
+  const commentId = req.params.commentId;
+  try {
+    const query = await Query.findById(Id);
+    if (!query) {
+      return res.status(404).json({ message: 'Query not found' });
+    }
+    const comment = await Comment.findById(commentId);
+    if (!comment) {
+      return res.status(404).json({ message: 'Comment not found' });
+    }
+    res.status(200).json({
+      comment: comment,
+      request: {
+        type: 'GET',
+        url: 'http://localhost:3000/queries/' + query._id + '/comments',
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      error: err,
+    });
+  }
 });
 
 module.exports = router;

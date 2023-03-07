@@ -43,7 +43,7 @@ export default QueryList;
 //! get the query list from the database
 //! display the query list
 //! when a query is clicked, navigate to the query detail page
-// get a comment form and display the comments
-// when a comment is submitted, add it to the database
-// when a comment is submitted, display it on the page
-// when a comment is submitted, navigate to the query detail page
+//! get a comment form and display the comments
+//! when a comment is submitted, add it to the database
+//! when a comment is submitted, display it on the page
+//! when a comment is submitted, navigate to the query detail page
