@@ -3,7 +3,6 @@ import { AnnouncementCardProps } from '@/utils/props/props';
 const AnnouncementCard: React.FC<AnnouncementCardProps> = ({
   title,
   announcement,
-  // imageUrl,
   nickname,
   date,
 }) => {
@@ -11,15 +10,6 @@ const AnnouncementCard: React.FC<AnnouncementCardProps> = ({
     <div>
       <div className="bg-gray-600 w-3/4 m-auto my-10 rounded-lg">
         <div className="flex px-3 py-2">
-          {/* <figure className="mx-2">
-            <img
-              src={imageUrl}
-              alt="profile"
-              height={50}
-              width={50}
-              className="rounded-full"
-            />
-          </figure> */}
           <div>
             <h2 className="text-2xl font-bold text-primary-white">{title}</h2>
             <h1 className="text-gray-300">

@@ -15,7 +15,6 @@ router.get('/', (req, res, next) => {
             _id: doc._id,
             announcement: doc.announcement,
             nickName: doc.nickName,
-            imageUrl: doc.imageUrl,
             request: {
               type: 'GET',
               url: 'http://localhost:3000/announcements/' + doc._id,
@@ -39,7 +38,6 @@ router.post('/', (req, res, next) => {
     title: req.body.title,
     announcement: req.body.announcement,
     nickName: req.body.nickName,
-    imageUrl: req.body.imageUrl,
   });
   announcement
     .save()
@@ -52,7 +50,6 @@ router.post('/', (req, res, next) => {
           title: result.title,
           announcement: result.announcement,
           nickName: result.nickName,
-          imageUrl: result.imageUrl,
           request: {
             type: 'GET',
             url: 'http://localhost:3000/announcements/' + result._id,

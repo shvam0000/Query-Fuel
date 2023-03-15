@@ -8,7 +8,6 @@ const AnnouncementForm = () => {
   const [title, setTitle] = useState<string>('');
   const [announcement, setAnnouncement] = useState<string>('');
   const [nickName, setNickName] = useState<any>();
-  // const [imageUrl, setImageUrl] = useState<any>();
 
   const { user, error, isLoading } = useUser();
 
@@ -18,7 +17,6 @@ const AnnouncementForm = () => {
       title: title,
       announcement: announcement,
       nickName: user?.nickname,
-      // imageUrl: user?.picture,
     };
     axios
       .post('http://localhost:3001/announcement', data)

@@ -26,7 +26,6 @@ const Hero = () => {
             key={announcement._id}
             title={announcement.title}
             announcement={announcement.announcement}
-            imageUrl={announcement.image}
             nickname={announcement.nickName}
             date={lastLoginDate}
           />
