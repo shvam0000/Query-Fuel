@@ -27,21 +27,17 @@ const QueryDetails = () => {
       });
   }, [id]);
 
-  const commentSubmitHandler = () => {
+  const commentSubmitHandler = (e: any) => {
     const data = {
-      query: query,
-      createdBy: createdBy,
-      comments: [{ comment: temp, createdBy: 'ankit' }],
+      comment: temp,
     };
-    axios('http://localhost:3001/query/' + id, {
+    axios(`http://localhost:3001/query/${id}/comments`, {
       method: 'PATCH',
       data: data,
-      headers: {
-        'Content-Type': 'application/json',
-      },
     })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
+        console.log('hehe', res.data.query);
         setComments(res.data.query.comments);
       })
       .catch((err) => {
@@ -83,10 +79,7 @@ const QueryDetails = () => {
         <div
           key={comment._id}
           className="flex justify-center items-center bg-blue-200 w-1/4 m-auto rounded-xl py-10">
-          <CommentItem
-            createdBy={comment.createdBy}
-            comment={comment.comment}
-          />
+          <CommentItem comment={comment.comment} />
         </div>
       ))}
     </div>

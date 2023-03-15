@@ -37,5 +37,4 @@ export type QueryItemProps = {
 
 export type CommentItemProps = {
   comment?: string;
-  createdBy: string;
 };

@@ -39,7 +39,6 @@ router.get('/', (req, res, next) => {
     });
 });
 
-//post a query with comments
 router.post('/', async (req, res, next) => {
   const query = new Query({
     _id: new mongoose.Types.ObjectId(),
@@ -69,7 +68,6 @@ router.post('/', async (req, res, next) => {
   });
 });
 
-//get one query with comments
 router.get('/:queryId', async (req, res, next) => {
   const Id = req.params.queryId;
   try {
