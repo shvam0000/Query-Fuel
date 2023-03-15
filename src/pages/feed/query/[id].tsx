@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button } from '@/components/shared';
-import { CommentItem, CommentList } from '@/components/feed';
+import { CommentItem } from '@/components/feed';
 
 const QueryDetails = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const QueryDetails = () => {
     axios
       .get('http://localhost:3001/query/' + id)
       .then((res) => {
-        console.log(res.data.query.comments);
+        console.log(res.data.query);
         setCreatedBy(res.data.query.createdBy);
         setQuery(res.data.query.query);
         setComments(res.data.query.comments);
@@ -27,36 +27,27 @@ const QueryDetails = () => {
       });
   }, [id]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get('http://localhost:3001/query/' + id + '/comments')
-  //     .then((res) => {
-  //       console.log(res.data.comments);
-  //       setComments(res.data.comments);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [id]);
-
-  // const commentSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   const comment = [];
-  //   comment.push(temp);
-  //   const data = {
-  //     comment: comment,
-  //     createdBy: 'Sarthak',
-  //   };
-  //   axios
-  //     .post(`http://localhost:3001/query/${id}/comments`, data)
-  //     .then((res) => {
-  //       console.log(res);
-  //       window.location.reload();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  const commentSubmitHandler = () => {
+    const data = {
+      query: query,
+      createdBy: createdBy,
+      comments: [{ comment: temp, createdBy: 'ankit' }],
+    };
+    axios('http://localhost:3001/query/' + id, {
+      method: 'PATCH',
+      data: data,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        console.log(res.data);
+        setComments(res.data.query.comments);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
@@ -70,7 +61,7 @@ const QueryDetails = () => {
       </div>
 
       <div className="max-w-lg mx-auto my-10 shadow-xl border-2">
-        <form className="w-full mx-auto p-4">
+        <form onSubmit={commentSubmitHandler} className="w-full mx-auto p-4">
           <label className="block mb-2">
             <span className="text-gray-600">Add a comment</span>
             <textarea
