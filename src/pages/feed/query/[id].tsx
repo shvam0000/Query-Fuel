@@ -17,53 +17,60 @@ const QueryDetails = () => {
     axios
       .get('http://localhost:3001/query/' + id)
       .then((res) => {
-        console.log(res.data.query.createdBy);
+        console.log(res.data.query.comments);
         setCreatedBy(res.data.query.createdBy);
         setQuery(res.data.query.query);
+        setComments(res.data.query.comments);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [id]);
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:3001/query/' + id + '/comments')
-      .then((res) => {
-        console.log(res.data.comments);
-        setComments(res.data.comments);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [id]);
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:3001/query/' + id + '/comments')
+  //     .then((res) => {
+  //       console.log(res.data.comments);
+  //       setComments(res.data.comments);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [id]);
 
-  const commentSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const comment = [];
-    comment.push(temp);
-    const data = {
-      comment: comment,
-      createdBy: 'Sarthak',
-    };
-    axios
-      .post(`http://localhost:3001/query/${id}/comments`, data)
-      .then((res) => {
-        console.log(res);
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const commentSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const comment = [];
+  //   comment.push(temp);
+  //   const data = {
+  //     comment: comment,
+  //     createdBy: 'Sarthak',
+  //   };
+  //   axios
+  //     .post(`http://localhost:3001/query/${id}/comments`, data)
+  //     .then((res) => {
+  //       console.log(res);
+  //       window.location.reload();
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   return (
     <div>
-      <h1>Created by - {createdBy}</h1>
-      <h1>Query - {query}</h1>
+      <div className="flex-row justify-center items-center text-center font-medium text-2xl">
+        <h1>
+          <span className="font-bold">Created by</span> - {createdBy}
+        </h1>
+        <h1>
+          <span className="font-bold">Query</span> - {query}
+        </h1>
+      </div>
 
-      <div className="max-w-lg shadow-xl border-2">
-        <form onSubmit={commentSubmitHandler} className="w-full p-4">
+      <div className="max-w-lg mx-auto my-10 shadow-xl border-2">
+        <form className="w-full mx-auto p-4">
           <label className="block mb-2">
             <span className="text-gray-600">Add a comment</span>
             <textarea
@@ -82,12 +89,14 @@ const QueryDetails = () => {
       </div>
 
       {comments.map((comment: any) => (
-        <CommentItem
+        <div
           key={comment._id}
-          id={comment._id}
-          comment={comment.comment}
-          createdBy={comment.createdBy}
-        />
+          className="flex justify-center items-center bg-blue-200 w-1/4 m-auto rounded-xl py-10">
+          <CommentItem
+            createdBy={comment.createdBy}
+            comment={comment.comment}
+          />
+        </div>
       ))}
     </div>
   );

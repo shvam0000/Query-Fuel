@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import QueryItem from './query-item';
+import { QueryItem } from './';
 import axios from 'axios';
+import { Button } from '../shared';
 
 const QueryList = () => {
   const router = useRouter();
@@ -23,13 +24,19 @@ const QueryList = () => {
       {queries.map((query: any) => (
         <div
           key={query._id}
-          onClick={() => router.push('/feed/query/' + query._id)}
-          className="justify-center items-center text-xl font-bold border-2 border-primary-black py-10 m-5">
-          <QueryItem
-            query={query.query}
-            id={query._id}
-            createdBy={query.createdBy}
-          />
+          className="w-2/3 mx-auto text-left px-10 rounded-2xl bg-slate-100 text-xl font-medium py-10 m-5 cursor-pointer">
+          <div>
+            <QueryItem
+              query={query.query}
+              id={query._id}
+              createdBy={query.createdBy}
+            />
+            <Button
+              handleClick={() => router.push('/feed/query/' + query._id)}
+              type="primary">
+              <h1>Show Details</h1>
+            </Button>
+          </div>
         </div>
       ))}
     </div>
@@ -37,13 +44,3 @@ const QueryList = () => {
 };
 
 export default QueryList;
-
-//! TODO:
-//! schema - id, query, createdAt, comments
-//! get the query list from the database
-//! display the query list
-//! when a query is clicked, navigate to the query detail page
-//! get a comment form and display the comments
-//! when a comment is submitted, add it to the database
-//! when a comment is submitted, display it on the page
-//! when a comment is submitted, navigate to the query detail page

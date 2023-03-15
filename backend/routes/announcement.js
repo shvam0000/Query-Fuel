@@ -36,6 +36,7 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
   const announcement = new Announcement({
     _id: new mongoose.Types.ObjectId(),
+    title: req.body.title,
     announcement: req.body.announcement,
     nickName: req.body.nickName,
     imageUrl: req.body.imageUrl,
@@ -48,6 +49,7 @@ router.post('/', (req, res, next) => {
         message: 'Created announcement successfully',
         createdAnnouncement: {
           _id: result._id,
+          title: result.title,
           announcement: result.announcement,
           nickName: result.nickName,
           imageUrl: result.imageUrl,

@@ -7,3 +7,4 @@ export { default as Location } from './location';
 export { default as Contact } from './contact';
 export { default as Github } from './github';
 export { default as Linkedin } from './linkedin';
+export { default as Clap } from './clap';

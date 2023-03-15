@@ -12,7 +12,6 @@ export type AnnouncementCardProps = {
   title: string;
   announcement: string;
   nickname: string;
-  // imageUrl?: string | 'https://i1.wp.com/cdn.auth0.com/avatars/ss.png?ssl=1';
   date?: string;
 };
 
@@ -37,7 +36,6 @@ export type QueryItemProps = {
 };
 
 export type CommentItemProps = {
-  id: string;
   comment?: string;
   createdBy: string;
 };
