@@ -6,9 +6,7 @@ const FeedPage = () => {
   return (
     <div>
       <FeedForm />
-      <div className="w-1/3 m-auto">
-        <Search />
-      </div>
+
       <QueryList />
     </div>
   );

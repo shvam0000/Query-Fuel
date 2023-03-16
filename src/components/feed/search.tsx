@@ -1,6 +1,7 @@
+import { SearchProps } from '@/utils/props/props';
 import React from 'react';
 
-const Search = () => {
+const Search: React.FC<SearchProps> = ({ setSearch }) => {
   return (
     <form>
       <label
@@ -25,11 +26,10 @@ const Search = () => {
           </svg>
         </div>
         <input
-          type="search"
-          id="default-search"
+          type="text"
           className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
           placeholder="Search queries..."
-          required
+          onChange={({ currentTarget: input }) => setSearch(input.value)}
         />
         <button
           type="submit"

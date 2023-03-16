@@ -1,26 +1,33 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { QueryItem } from './';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+import { QueryItem, Search } from './';
 import { Button } from '../shared';
+
+const base_url = 'http://localhost:3001/query';
 
 const QueryList = () => {
   const router = useRouter();
   const [queries, setQueries] = useState<any>([]);
+  const [search, setSearch] = useState<string>('');
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/query')
+      .get(`${base_url}?search=${search}`)
       .then((res) => {
         setQueries(res.data.queries);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [search]);
 
   return (
     <div>
+      <div className="w-1/3 m-auto">
+        {/* @ts-ignore */}
+        <Search setSearch={(search) => setSearch(search)} />
+      </div>
       {queries.map((query: any) => (
         <div
           key={query._id}

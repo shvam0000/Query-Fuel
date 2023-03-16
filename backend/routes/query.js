@@ -4,39 +4,39 @@ const router = express.Router();
 
 const Query = require('../models/query');
 
-router.get('/', (req, res, next) => {
-  Query.find()
-    .exec()
-    .then((docs) => {
-      const response = {
-        count: docs.length,
-        queries: docs.map((doc) => {
-          return {
-            _id: doc._id,
-            query: doc.query,
-            createdBy: doc.createdBy,
-            comments: doc.comments.map((comment) => {
-              return {
-                _id: comment._id,
-                comment: comment.comment,
-                createdBy: comment.createdBy,
-              };
-            }),
-            request: {
-              type: 'GET',
-              url: 'http://localhost:3000/queries/' + doc._id,
-            },
-          };
-        }),
-      };
-      res.status(200).json(response);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-      });
+router.get('/', async (req, res, next) => {
+  try {
+    const search = req.query.search || '';
+    const queries = await Query.find({
+      query: { $regex: search, $options: 'i' },
     });
+    res.status(200).json({
+      count: queries.length,
+      queries: queries.map((query) => {
+        return {
+          _id: query._id,
+          query: query.query,
+          createdBy: query.createdBy,
+          comments: query.comments.map((comment) => {
+            return {
+              _id: comment._id,
+              comment: comment.comment,
+              createdBy: comment.createdBy,
+            };
+          }),
+          request: {
+            type: 'GET',
+            url: 'http://localhost:3000/queries/' + query._id,
+          },
+        };
+      }),
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      error: err,
+    });
+  }
 });
 
 router.post('/', async (req, res, next) => {

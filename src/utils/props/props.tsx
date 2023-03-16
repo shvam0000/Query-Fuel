@@ -38,3 +38,7 @@ export type QueryItemProps = {
 export type CommentItemProps = {
   comment?: string;
 };
+
+export type SearchProps = {
+  setSearch?: any;
+};
