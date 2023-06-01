@@ -9,9 +9,18 @@ const announcementRoutes = require('./routes/announcement');
 const contactRoutes = require('./routes/contact');
 const queryRoutes = require('./routes/query');
 
-mongoose.connect(
-  'mongodb+srv://admin:admin@node-rest-shop.5kcqy.mongodb.net/?retryWrites=true&w=majority'
-);
+mongoose.set('strictQuery', false);
+
+mongoose
+  .connect(
+    'mongodb+srv://admin:admin@node-rest-shop.5kcqy.mongodb.net/?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => console.log('Database connected!'))
+  .catch((err) => console.log(err));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
